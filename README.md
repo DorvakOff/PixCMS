@@ -1,8 +1,10 @@
 # PixCMS
 
+> Application starts at [`http://localhost:8080`](http://localhost:8080)
 
 # Development
-> Run configurations for IntelliJ Idea are given in this repo ([.run/](./.run/))
+
+> Run configurations for IntelliJ Idea are given in this repo ([.run/](./.run))
 
 ## Building for production
 1. Run ``npm run build`` in the src/main/frontend directory
