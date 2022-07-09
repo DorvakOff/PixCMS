@@ -1,0 +1,72 @@
+<div class="container">
+
+  <!-- Outer Row -->
+  <div class="row d-flex align-items-center justify-content-center" style="height: 100vh">
+
+    <div class="col-8">
+      <div class="card o-hidden border-0 shadow-lg my-5">
+        <div class="card-body p-0">
+          <!-- Nested Row within Card Body -->
+          <div class="p-5">
+            <div class="text-center">
+              <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
+            </div>
+            <form class="user">
+              <div class="form-group pt-2 px-2">
+                <input [(ngModel)]="email" aria-describedby="emailHelp"
+                       class="form-control form-control-user" id="exampleInputEmail"
+                       name="email" placeholder="Enter Email Address..." type="email">
+              </div>
+              <div class="form-group pt-2 px-2">
+                <input [(ngModel)]="username" aria-describedby="userHelp"
+                       class="form-control form-control-user" id="exampleInputUsername"
+                       name="username" placeholder="Enter Username" type="text">
+              </div>
+              <div class="form-group pt-2 px-2">
+                <div class="row">
+                  <div class="col">
+                    <input [(ngModel)]="password" class="form-control form-control-user"
+                           id="exampleInputPassword" name="password" placeholder="Password" type="password">
+                  </div>
+                  <div class="col">
+                    <input [(ngModel)]="repeatPassword" class="form-control form-control-user"
+                           id="exampleRepeatPassword" name="repeat-password" placeholder="Repeat Password"
+                           type="password">
+                  </div>
+                </div>
+                <div *ngIf="password && repeatPassword && !checkPasswords()" class="alert alert-danger mt-2"
+                     role="alert">
+                  Passwords does not match!
+                </div>
+              </div>
+              <div class="form-group p-2">
+                <div class="custom-control custom-checkbox small">
+                  <input [(ngModel)]="rememberMe" class="custom-control-input" id="customCheck" name="remember-me"
+                         type="checkbox">
+                  <label class="custom-control-label ps-3" for="customCheck">Remember
+                    Me</label>
+                </div>
+              </div>
+              <div *ngIf="error" class="alert alert-danger mt-2"
+                   role="alert">
+                {{error.message}}
+              </div>
+              <div class="form-group p-2 text-center" style="width: 100%">
+                <button (click)="clickRegister()" class="btn btn-primary p-2" style="width: 100%">
+                  Register
+                </button>
+              </div>
+            </form>
+            <hr>
+            <div class="text-center">
+              <a class="small m-3" href="forgot-password.html">Forgot Password?</a>
+              <a class="small m-3" routerLink="/login">Already have an Account?</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>

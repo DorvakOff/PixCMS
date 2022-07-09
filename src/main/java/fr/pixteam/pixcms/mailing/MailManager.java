@@ -71,4 +71,8 @@ public class MailManager {
 
         Transport.send(message);
     }
+
+    public boolean isMailingEnabled() {
+        return mailingEnabled;
+    }
 }

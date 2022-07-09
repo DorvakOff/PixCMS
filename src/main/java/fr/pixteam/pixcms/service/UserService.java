@@ -11,7 +11,9 @@ public interface UserService {
 
     @NotNull Iterable<User> getAllUsers();
 
-    User create(@NotNull(message = "The order cannot be null.") @Valid User order);
+    User create(@NotNull(message = "The user cannot be null.") @Valid User user);
 
-    void update(@NotNull(message = "The order cannot be null.") @Valid User order);
+    void update(@NotNull(message = "The user cannot be null.") @Valid User user);
+
+    User find(@NotNull(message = "The user cannot be null") @Valid String username);
 }

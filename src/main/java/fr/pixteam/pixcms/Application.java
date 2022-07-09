@@ -2,9 +2,7 @@ package fr.pixteam.pixcms;
 
 import fr.pixteam.pixcms.mailing.MailManager;
 import fr.pixteam.pixcms.managers.Environment;
-import fr.pixteam.pixcms.model.User;
 import fr.pixteam.pixcms.service.UserService;
-import fr.pixteam.pixcms.utils.MailUtils;
 import fr.pixteam.pixcms.utils.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,9 +14,7 @@ import org.springframework.stereotype.Controller;
 
 import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
-import javax.mail.MessagingException;
 
 @Controller
 @SpringBootApplication
@@ -44,11 +40,7 @@ public class Application {
         Environment.load();
         AuthManager.initKeyPairs();
         mailManager = new MailManager();
-        try {
-            mailManager.sendMail("Confirm your account", MailUtils.getVerifyEmailTemplate("Dorvak", "https://pixbot.me/login"), Collections.singletonList("contact@dorvak.com"));
-        } catch (MessagingException e) {
-            e.printStackTrace();
-        }
+
         SpringApplication.run(Application.class, args);
     }
 
@@ -62,6 +54,7 @@ public class Application {
 
     @Bean
     CommandLineRunner runner(UserService userService) {
-        return args -> userService.create(new User("Dorvak", "contact@dorvak.com"));
+        return args -> {
+        };
     }
 }

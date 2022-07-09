@@ -22,8 +22,16 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(ConstraintViolationException.class)
     public ResponseEntity<ErrorItem> handle(ConstraintViolationException e) {
         ErrorItem error = new ErrorItem();
-        error.setReason(e.getConstraintName());
-        error.setMessage(e.getMessage());
+        error.setReason(e.getMessage());
+
+        String message;
+
+        if (e.getSQLException().getMessage().contains("insert into users")) {
+            message = "Un compte avec cet email et/ou utilisateur existe déjà.";
+        } else {
+            message = e.getSQLException().getMessage();
+        }
+        error.setMessage(message);
 
         return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
     }

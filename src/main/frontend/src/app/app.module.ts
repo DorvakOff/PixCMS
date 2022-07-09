@@ -9,6 +9,7 @@ import {LoginComponent} from './login/login.component';
 import {Error404Component} from './error404/error404.component';
 import {ThemeSwitcherComponent} from "./theme-switcher/theme-switcher.component";
 import {HttpClientModule} from "@angular/common/http";
+import {RegisterComponent} from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import {HttpClientModule} from "@angular/common/http";
     HomeComponent,
     LoginComponent,
     Error404Component,
-    ThemeSwitcherComponent
+    ThemeSwitcherComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

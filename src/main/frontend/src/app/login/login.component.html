@@ -12,32 +12,39 @@
               <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
             </div>
             <form class="user">
-              <div class="form-group p-3">
-                <input type="email" class="form-control form-control-user"
-                       id="exampleInputEmail" aria-describedby="emailHelp"
-                       placeholder="Enter Email Address...">
+              <div class="form-group p-2">
+                <input [(ngModel)]="username" aria-describedby="usernameHelp"
+                       class="form-control form-control-user" id="exampleInputUsername"
+                       name="username" placeholder="Enter Username" type="text">
               </div>
-              <div class="form-group p-3">
+              <div class="form-group p-2">
                 <input type="password" class="form-control form-control-user"
-                       id="exampleInputPassword" placeholder="Password">
+                       [(ngModel)]="password" id="exampleInputPassword" name="password" placeholder="Password">
               </div>
-              <div class="form-group p-3">
+              <div class="form-group p-2">
                 <div class="custom-control custom-checkbox small">
-                  <input type="checkbox" class="custom-control-input" id="customCheck">
+                  <input [(ngModel)]="rememberMe" class="custom-control-input" id="customCheck" name="remember-me"
+                         type="checkbox">
                   <label class="custom-control-label ps-3" for="customCheck">Remember
                     Me</label>
                 </div>
               </div>
-              <div class="form-group p-3 text-center" style="width: 100%">
-                <a href="index.html" class="btn btn-primary p-2" style="width: 100px">
-                  Login
-                </a>
+              <div *ngIf="error" class="alert alert-danger mt-2"
+                   role="alert">
+                {{error.message}}
+              </div>
+              <div class="form-group p-2 text-center" style="width: 100%">
+                <button (click)="onClickLogin()" [disabled]="authLoading" class="btn btn-primary p-2"
+                        style="width: 100%">
+                  <span *ngIf="!authLoading">Login</span>
+                  <i *ngIf="authLoading" class="fa-solid fa-circle-notch fa-spin"></i>
+                </button>
               </div>
             </form>
             <hr>
             <div class="text-center">
               <a class="small m-3" href="forgot-password.html">Forgot Password?</a>
-              <a class="small m-3" href="register.html">Create an Account!</a>
+              <a class="small m-3" routerLink="/register">Create an Account!</a>
             </div>
           </div>
         </div>

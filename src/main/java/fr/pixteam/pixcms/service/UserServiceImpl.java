@@ -5,8 +5,8 @@ import fr.pixteam.pixcms.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
-import java.time.LocalDate;
 import java.util.Date;
+import java.util.Locale;
 import javax.transaction.Transactional;
 
 @Service
@@ -34,5 +34,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public void update(User order) {
         this.userRepository.save(order);
+    }
+
+    @Override
+    public User find(String username) {
+        return this.userRepository.findUserByUsernameLowerCase(username.toLowerCase(Locale.ROOT));
     }
 }
