@@ -9,8 +9,12 @@ public class FileUtils {
     }
 
     public static void generateFileIfAbsent(String path, String fileName) {
-        generateDirectoriesIfAbsent(path);
-        File file = new File(path, fileName);
+        generateFileIfAbsent(new File(path, fileName));
+    }
+
+    public static void generateFileIfAbsent(File file) {
+        if (file.getParentFile() != null)
+            generateDirectoriesIfAbsent(file.getParentFile().getPath());
         if (!file.exists()) {
             try {
                 file.createNewFile();

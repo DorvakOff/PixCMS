@@ -22,14 +22,18 @@ public class User {
     @NotNull(message = "Username cannot be null")
     @Column(unique = true)
     private String username;
+    @NotNull(message = "Email cannot be null")
+    @Column(unique = true)
+    private String email;
     @JsonFormat(pattern = "dd/MM/yyyy - HH:mm:ss")
     private Date dateCreated;
 
     public User() {
     }
 
-    public User(String username) {
+    public User(String username, String email) {
         this.username = username;
+        this.email = email;
     }
 
     public Long getId() {
@@ -56,11 +60,20 @@ public class User {
         this.dateCreated = dateCreated;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     @Override
     public String toString() {
         return "User{" +
                 "id=" + id +
                 ", username='" + username + '\'' +
+                ", email='" + email + '\'' +
                 ", dateCreated=" + dateCreated +
                 '}';
     }
