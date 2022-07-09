@@ -13,12 +13,20 @@ export class LoginComponent implements OnInit {
   rememberMe: boolean = false;
   authLoading: boolean = false;
   redirect: string = '/'
-  error: any;
+  error: any
+  success: any
 
   constructor(private http: HttpClient, private router: Router, route: ActivatedRoute) {
     route.queryParams.subscribe(params => {
       if (params['redirect']) {
         this.redirect = params["redirect"]
+      }
+      if (params['verificationCode']) {
+        http.post("/api/users/validate", {verificationCode: params['verificationCode']}).subscribe(() => {
+          this.success = "Successfully verified your account, you may now login."
+        }, error => {
+          this.error = error.error
+        })
       }
     })
   }
@@ -29,6 +37,7 @@ export class LoginComponent implements OnInit {
   onClickLogin() {
     this.authLoading = true
     this.error = undefined
+    this.success = undefined
     if (this.username && this.password) {
       this.http.post<string>('/api/users/login', {
         username: this.username,

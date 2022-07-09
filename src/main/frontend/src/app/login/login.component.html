@@ -29,6 +29,10 @@
                     Me</label>
                 </div>
               </div>
+              <div *ngIf="success" class="alert alert-success mt-2"
+                   role="alert">
+                {{success}}
+              </div>
               <div *ngIf="error" class="alert alert-danger mt-2"
                    role="alert">
                 {{error.message}}
